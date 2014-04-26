@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/admin/css/main.css') }}">
+{% endblock %}
+
+{% block body %}
+    <header>
+        <p>Symfony2 Demo - Admin</p>
+        <ul>
+            <li>
+                <a href="#">Posts</a>
+                <a href="#">Authors</a>
+            </li>
+        </ul>
+    </header>
+
+    {% block sidebar %}{% endblock %}
+
+    <section>
+        {% for type, messages in app.session.flashBag.all() %}
+            {% for message in messages %}
+                <p class="session-message">{{ message }}</p>
+            {% endfor %}
+        {% endfor %}
+
+        {% if error %}
+            <div>{{ error.message }}</div>
+        {% endif %}
+
+        {% block section %}{% endblock %}
+    </section>
+
+    <footer>
+        &copy; {{ 'now' | date('Y') }} symfony2demo.com
+    </footer>
+
+{% endblock %}
