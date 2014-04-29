@@ -10,7 +10,7 @@
         <ul>
             <li>
                 <a href="#">Posts</a>
-                <a href="#">Authors</a>
+                <a href="{{ path('blog_admin_author_index') }}">Authors</a>
             </li>
         </ul>
     </header>
@@ -23,10 +23,6 @@
                 <p class="session-message">{{ message }}</p>
             {% endfor %}
         {% endfor %}
-
-        {% if error %}
-            <div>{{ error.message }}</div>
-        {% endif %}
 
         {% block section %}{% endblock %}
     </section>
